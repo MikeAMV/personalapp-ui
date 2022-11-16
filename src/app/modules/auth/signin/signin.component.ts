@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
+import { AuthService } from "../services/auth.service";
 import { User } from "../types/user";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signin",
@@ -7,12 +9,25 @@ import { User } from "../types/user";
 })
 export class SigninComponent {
   loginValid: boolean = false;
+  isLoading: boolean = false;
+  logoPath = "../../../../assets/img/utez.png";
+
   user: User = {
-    username: "",
+    email: "",
     password: "",
   };
+  session: any = {
+    logged: false,
+  };
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {
+    this.session.logged = localStorage.getItem("token") ? true : false;
+    if (this.session.logged) this.router.navigate(["/"]);
+  }
 
-  constructor() {}
-
-  signin() {}
+  signin() {
+    this.authService.login(this.user);
+  }
 }

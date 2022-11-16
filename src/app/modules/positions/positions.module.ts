@@ -1,12 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MainPositionComponent } from "./main-position/main-position.component";
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [MainPositionComponent],
+  imports: [CommonModule],
+  exports: [MainPositionComponent],
 })
-export class PositionsModule { }
+export class PositionsModule {}

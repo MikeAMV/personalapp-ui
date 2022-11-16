@@ -1,4 +1,6 @@
+import { FormControl } from "@angular/forms";
+
 export type User = {
-  username: string;
+  email: string;
   password: string;
 };

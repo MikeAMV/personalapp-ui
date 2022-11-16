@@ -1,10 +1,8 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
-import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavigationComponent } from "./shared/navigation/navigation.component";
-import { LayoutModule } from "@angular/cdk/layout";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -18,29 +16,49 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatSelectModule } from "@angular/material/select";
 import { MatOptionModule } from "@angular/material/core";
 import { AppRouterModule } from "./shared/routers/app-routing.module";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AppComponent } from "./app.component";
+import { ScreenComponent } from "./shared/splash/screen/screen.component";
+import { PersonalModule } from "./modules/personal/personal.module";
+import { CustomHttpInterceptor } from "./services/http-interceptor.service";
+import { AuthModule } from "./modules/auth/auth.module";
+
+const materialModules = [
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatToolbarModule,
+  MatInputModule,
+  MatCardModule,
+  MatMenuModule,
+  MatTableModule,
+  MatSlideToggleModule,
+  MatSelectModule,
+  MatOptionModule,
+];
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent],
+  declarations: [NavigationComponent, AppComponent, ScreenComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     AppRouterModule,
     BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatCardModule,
-    MatMenuModule,
-    MatTableModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatOptionModule,
+    ...materialModules,
+    PersonalModule,
+    AuthModule,
   ],
-  providers: [],
-  bootstrap: [NavigationComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true,
+    },
+  ],
+  exports: [AppComponent, NavigationComponent, ScreenComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

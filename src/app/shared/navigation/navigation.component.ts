@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { Observable } from "rxjs";
 import { map, shareReplay } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navigation",
@@ -9,6 +10,7 @@ import { map, shareReplay } from "rxjs/operators";
   styleUrls: ["./navigation.component.css"],
 })
 export class NavigationComponent {
+  logoPath = "../../../../assets/img/utez.png";
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -18,5 +20,11 @@ export class NavigationComponent {
   session: any = {
     logged: false,
   };
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {
+    this.session.logged = localStorage.getItem("token") ? true : false;
+    if (!this.session.logged) this.router.navigate(["/auth"]);
+  }
 }

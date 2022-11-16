@@ -5,16 +5,21 @@ import { MainPersonalComponent } from "../../modules/personal/main-personal/main
 import { MainUserComponent } from "../../modules/users/main-user/main-user.component";
 import { SigninComponent } from "../../modules/auth/signin/signin.component";
 import { NavigationComponent } from "../navigation/navigation.component";
+import { MainPositionComponent } from "../../modules/positions/main-position/main-position.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: NavigationComponent,
+    component: MainPersonalComponent,
     pathMatch: "full",
   },
   {
     path: "personal",
     component: MainPersonalComponent,
+  },
+  {
+    path: "position",
+    component: MainPositionComponent,
   },
   {
     path: "user",
@@ -33,5 +38,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  bootstrap: [AppComponent],
 })
 export class AppRouterModule {}
