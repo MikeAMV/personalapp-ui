@@ -3,8 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AppComponent } from "../../app.component";
 import { MainPersonalComponent } from "../../modules/personal/main-personal/main-personal.component";
 import { MainUserComponent } from "../../modules/users/main-user/main-user.component";
-import { SigninComponent } from "../../modules/auth/signin/signin.component";
-import { NavigationComponent } from "../navigation/navigation.component";
+import { SigninComponent } from "../../modules/auth/pages/signin/signin.component";
 import { MainPositionComponent } from "../../modules/positions/main-position/main-position.component";
 
 const routes: Routes = [
