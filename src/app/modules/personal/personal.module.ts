@@ -1,15 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MainPersonalComponent } from "./main-personal/main-personal.component";
-import { ListPersonalComponent } from "./list-personal/list-personal.component";
-import { AddPersonalComponent } from "./add-personal/add-personal.component";
+import { MainPersonalComponent } from "./pages/main-personal/main-personal.component";
 import { FormsModule } from "@angular/forms";
 import { materialModules } from "src/app/services/material.modules";
+import { AddPersonalComponent } from './pages/add-personal/add-personal.component';
 
 @NgModule({
   declarations: [
     MainPersonalComponent,
-    ListPersonalComponent,
     AddPersonalComponent,
   ],
   imports: [CommonModule, FormsModule, ...materialModules],
