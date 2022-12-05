@@ -15,6 +15,7 @@ import { AddPersonalComponent } from '../add-personal/add-personal.component';
 export class MainPersonalComponent implements OnInit {
   displayedColumns: string[] = [
     '#',
+    'avatar',
     'name',
     'surname',
     'lastname',

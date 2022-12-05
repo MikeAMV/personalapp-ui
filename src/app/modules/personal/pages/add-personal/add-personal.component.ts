@@ -34,6 +34,7 @@ export class AddPersonalComponent implements OnInit {
 
   savePersonal() {
     console.log(this.personal);
+    this.personal.avatar = this.loadedFile;
     if (this.personalService.edit) {
       this.personalService.update(this.personal)
         .subscribe((response) => {

@@ -8,5 +8,6 @@ export type Personal = Entity<number> & {
   birthday: string;
   salary: number;
   position?: Position;
-  user: any
+  user: any,
+  avatar?: string
 };
